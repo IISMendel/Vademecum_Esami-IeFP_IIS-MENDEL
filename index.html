@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vademecum Esami IeFP 2025/26 – IIS Mendel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark:   #1b5e20;
+    --green-mid:    #2e7d32;
+    --green-light:  #4caf50;
+    --green-pale:   #e8f5e9;
+    --green-xpale:  #f1f8f2;
+    --white:        #ffffff;
+    --grey-bg:      #f5f5f5;
+    --text-dark:    #1a1a1a;
+    --text-mid:     #3d3d3d;
+    --text-soft:    #6a7a6b;
+    --amber:        #ff8f00;
+    --amber-pale:   #fff8e1;
+    --red-soft:     #c62828;
+    --red-pale:     #ffebee;
+    --blue-soft:    #1565c0;
+    --blue-pale:    #e3f2fd;
+    --radius-sm:    8px;
+    --radius-md:    14px;
+    --radius-lg:    22px;
+    --shadow-sm:    0 2px 8px rgba(0,0,0,.08);
+    --shadow-md:    0 6px 24px rgba(0,0,0,.11);
+    --shadow-lg:    0 16px 48px rgba(0,0,0,.14);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--grey-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    background: var(--green-dark);
+    color: #a5d6a7;
+    font-family: 'Lexend', sans-serif;
+    font-size: .78rem;
+    font-weight: 400;
+    letter-spacing: .06em;
+    text-align: center;
+    padding: 8px 20px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 55%, #388e3c 100%);
+    color: var(--white);
+    padding: 64px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 50px;
+    font-family: 'Lexend', sans-serif;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    padding: 6px 18px;
+    margin-bottom: 22px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.1;
+    margin-bottom: 14px;
+    text-shadow: 0 2px 12px rgba(0,0,0,.25);
+  }
+  .hero h1 span { color: #a5d6a7; }
+  .hero-sub {
+    font-size: 1.1rem;
+    opacity: .85;
+    max-width: 600px;
+    margin: 0 auto 36px;
+  }
+  .hero-classes {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  }
+  .class-pill {
+    background: rgba(255,255,255,.18);
+    border: 1.5px solid rgba(255,255,255,.4);
+    border-radius: 50px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+    font-size: .95rem;
+    padding: 8px 22px;
+    letter-spacing: .04em;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+    display: flex; flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+    z-index: 10;
+    margin: -1px 0 0;
+  }
+  .stat-item {
+    flex: 1; min-width: 160px;
+    text-align: center;
+    padding: 22px 20px;
+    border-right: 1px solid #e0e0e0;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--green-mid);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: .8rem;
+    color: var(--text-soft);
+    margin-top: 4px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  /* ── CONTENT WRAPPER ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* ── SECTION CARDS ── */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+  .card-header {
+    background: var(--green-mid);
+    color: var(--white);
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-header .icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .card-header h2 {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: .01em;
+  }
+  .card-header .tag {
+    margin-left: auto;
+    background: rgba(255,255,255,.2);
+    border-radius: 50px;
+    font-size: .75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    white-space: nowrap;
+    letter-spacing: .04em;
+  }
+  .card-body { padding: 28px; }
+
+  /* ── ALERT BOXES ── */
+  .alert {
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: .92rem;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .alert-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+  .alert-amber { background: var(--amber-pale); border-left: 4px solid var(--amber); color: #5d4037; }
+  .alert-red   { background: var(--red-pale);   border-left: 4px solid var(--red-soft); color: #5d0000; }
+  .alert-green { background: var(--green-pale);  border-left: 4px solid var(--green-light); color: #1b5e20; }
+  .alert-blue  { background: var(--blue-pale);   border-left: 4px solid var(--blue-soft); color: #0d326f; }
+  .alert strong { font-weight: 700; }
+
+  /* ── TABLE STYLES ── */
+  .table-wrap { overflow-x: auto; border-radius: var(--radius-md); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+  }
+  thead tr { background: var(--green-dark); color: var(--white); }
+  thead th {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+    padding: 12px 14px;
+    text-align: left;
+    font-size: .82rem;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid #e8f5e9; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:nth-child(even) { background: var(--green-xpale); }
+  tbody td { padding: 11px 14px; vertical-align: top; line-height: 1.45; }
+  tbody td:first-child { font-weight: 600; color: var(--green-dark); }
+  .sub-row { color: var(--text-soft); font-size: .83rem; margin-top: 2px; }
+
+  /* ── COMMISSARI TABLE special ── */
+  .comm-table thead th:first-child { width: 180px; }
+  .comm-table tbody td { font-size: .86rem; }
+
+  /* ── DEADLINE GRID ── */
+  .deadline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .deadline-card {
+    border-radius: var(--radius-md);
+    padding: 16px 18px;
+    border: 1.5px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .deadline-card.urgent  { background: var(--red-pale);   border-color: #ef9a9a; }
+  .deadline-card.warning { background: var(--amber-pale);  border-color: #ffcc80; }
+  .deadline-card.normal  { background: var(--green-pale);  border-color: #a5d6a7; }
+  .deadline-card.info    { background: var(--blue-pale);   border-color: #90caf9; }
+  .dl-date {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 900;
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+  .deadline-card.urgent  .dl-date { color: var(--red-soft); }
+  .deadline-card.warning .dl-date { color: #e65100; }
+  .deadline-card.normal  .dl-date { color: var(--green-mid); }
+  .deadline-card.info    .dl-date { color: var(--blue-soft); }
+  .dl-title { font-weight: 600; font-size: .94rem; margin-bottom: 4px; }
+  .dl-who   { font-size: .8rem; color: var(--text-soft); }
+
+  /* ── EXAM STRUCTURE ── */
+  .exam-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+    margin-top: 4px;
+  }
+  .exam-card {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .exam-card-head {
+    padding: 14px 18px;
+    color: var(--white);
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+    font-size: .95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ec-blue   { background: var(--blue-soft); }
+  .ec-orange { background: #e65100; }
+  .ec-teal   { background: #00695c; }
+  .exam-card-body { background: var(--white); padding: 16px 18px; }
+  .exam-card-body ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .exam-card-body li { font-size: .88rem; display: flex; gap: 8px; align-items: flex-start; }
+  .exam-card-body li::before { content: '▸'; color: var(--green-light); flex-shrink: 0; margin-top: 1px; }
+
+  .score-badge {
+    display: inline-block;
+    background: var(--green-mid);
+    color: var(--white);
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+    font-size: .8rem;
+    border-radius: 50px;
+    padding: 3px 12px;
+    margin-left: auto;
+  }
+
+  /* ── TIMING STRIP ── */
+  .timing-strip {
+    background: var(--green-xpale);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .timing-item { display: flex; align-items: flex-start; gap: 10px; }
+  .timing-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--green-mid);
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .timing-text { font-size: .88rem; }
+  .timing-text strong { display: block; font-weight: 700; color: var(--green-dark); font-size: .92rem; }
+
+  /* ── COLLOQUIO PHASES ── */
+  .phases { display: flex; flex-direction: column; gap: 12px; }
+  .phase {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--green-xpale);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+  }
+  .phase-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--green-mid);
+    color: var(--white);
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+    font-size: .95rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .phase-content h4 { font-family: 'Lexend', sans-serif; font-weight: 700; font-size: .94rem; margin-bottom: 3px; }
+  .phase-content p  { font-size: .86rem; color: var(--text-mid); }
+
+  /* ── PUNTEGGI TABLE ── */
+  .score-table td:last-child { font-weight: 700; color: var(--green-dark); text-align: right; }
+  .score-table tfoot td { background: var(--green-dark); color: var(--white); font-family: 'Lexend', sans-serif; font-weight: 700; padding: 12px 14px; }
+  .score-table tfoot td:last-child { color: #a5d6a7; }
+
+  /* ── BES / DSA SECTION ── */
+  .bes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .bes-card {
+    border-radius: var(--radius-md);
+    padding: 18px;
+    border-top: 4px solid transparent;
+  }
+  .bes-card.h1  { background: #e8eaf6; border-color: #3949ab; }
+  .bes-card.h2  { background: var(--red-pale);  border-color: var(--red-soft); }
+  .bes-card.dsa { background: var(--amber-pale); border-color: var(--amber); }
+  .bes-tag {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+  }
+  .bes-card.h1  .bes-tag { color: #3949ab; }
+  .bes-card.h2  .bes-tag { color: var(--red-soft); }
+  .bes-card.dsa .bes-tag { color: #e65100; }
+  .bes-card h4  { font-weight: 700; margin-bottom: 6px; font-size: .92rem; }
+  .bes-card p   { font-size: .84rem; color: var(--text-mid); line-height: 1.5; }
+
+  /* ── LINK ── */
+  a { color: var(--green-mid); font-weight: 600; text-decoration: none; }
+  a:hover { text-decoration: underline; color: var(--green-dark); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green-dark);
+    color: #a5d6a7;
+    text-align: center;
+    padding: 28px 20px;
+    font-family: 'Lexend', sans-serif;
+    font-size: .82rem;
+    letter-spacing: .04em;
+  }
+  footer strong { color: var(--white); }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--green-dark);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--green-pale);
+  }
+
+  /* ── NORMS ROW ── */
+  .norms-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .norm-pill {
+    background: var(--green-pale);
+    border: 1px solid #a5d6a7;
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: .83rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  ul.check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  ul.check-list li { display: flex; gap: 10px; font-size: .9rem; }
+  ul.check-list li::before { content: '✓'; color: var(--green-light); font-weight: 700; flex-shrink: 0; }
+
+  @media (max-width: 640px) {
+    .card-body { padding: 18px 16px; }
+    .stat-item { min-width: 120px; padding: 16px 12px; }
+    .stat-num  { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">IIS GREGORIO MENDEL – Villa Cortese (MI) &nbsp;·&nbsp; A.S. 2025/2026 &nbsp;·&nbsp; Corso Professionale IeFP</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">📋 Vademecum Organizzativo</div>
+  <h1>Esami <span>IeFP</span><br>Giugno 2026</h1>
+  <p class="hero-sub">Guida completa per l'organizzazione degli esami di qualifica e diploma professionale — classi terze e quarte</p>
+  <div class="hero-classes">
+    <span class="class-pill">3PA</span>
+    <span class="class-pill">3PB</span>
+    <span class="class-pill">3PC</span>
+    <span class="class-pill">4PA</span>
+    <span class="class-pill">4PB</span>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">60</div><div class="stat-label">Punti max esame</div></div>
+  <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Prove d'esame</div></div>
+  <div class="stat-item"><div class="stat-num">4 giu</div><div class="stat-label">Prova centralizzata</div></div>
+  <div class="stat-item"><div class="stat-num">3 giu</div><div class="stat-label">Riunione preliminare</div></div>
+  <div class="stat-item"><div class="stat-num">24–40</div><div class="stat-label">Range credito formativo</div></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- 1. RIFERIMENTI NORMATIVI -->
+  <div class="card">
+    <div class="card-header"><span class="icon">⚖️</span><h2>Riferimenti Normativi</h2></div>
+    <div class="card-body">
+      <div class="norms-row" style="margin-bottom:16px">
+        <span class="norm-pill">📌 D.R.L. n. 12550 del 20-12-2013 – "Indicazioni"</span>
+        <span class="norm-pill">📌 DDS n. 7214 del 2014 – "Procedure"</span>
+        <span class="norm-pill">📌 Competenze attese fine percorsi III e IV anno IeFP</span>
+        <span class="norm-pill">📌 Nota esami IeFP RL – Decreto n. …/2026</span>
+      </div>
+      <div class="alert alert-blue">
+        <span class="alert-icon">🔗</span>
+        <div>
+          <strong>Materiali digitali:</strong><br>
+          <a href="https://drive.google.com/drive/folders/0AHhQ1ixcFCekUk9PVA" target="_blank">Drive condivisi → Curricolo e UDA IeFP V P</a><br>
+          <a href="https://drive.google.com/drive/folders/1vL362H-2SbIQBsrd8m_whWaE-L9FayK1?usp=drive_link" target="_blank">Documenti preparativi esami IeFP 2025/2026</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. COMMISSARI -->
+  <div class="card">
+    <div class="card-header"><span class="icon">👩‍🏫</span><h2>Commissari e Membri Aggregati</h2></div>
+    <div class="card-body">
+      <div class="table-wrap">
+        <table class="comm-table">
+          <thead>
+            <tr>
+              <th>Disciplina / Ruolo</th>
+              <th>3PA</th><th>3PB</th><th>3PC</th><th>4PA</th><th>4PB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Commissari</strong><br>
+                <span class="sub-row">Italiano · Ecologia · Es. Agrarie</span>
+              </td>
+              <td>Zanzottera<br>Sanfilippo<br>Franzè</td>
+              <td>Russo<br>Donnarumma<br>Stivala</td>
+              <td>De Giorgi<br>Colombo<br>Ziparo</td>
+              <td>Sala<br>Rodà<br>Ziparo</td>
+              <td>Colombo<br>Rodà<br>Cozzi</td>
+            </tr>
+            <tr>
+              <td><strong>Aggregati sostegno</strong></td>
+              <td>Cortese<br>Pennisi</td>
+              <td>Ascarini<br>Paxia<br>Corinti</td>
+              <td>Ascarini<br>Mule'<br>Di Maria</td>
+              <td>Flecca</td>
+              <td>Ferrise<br>Violi</td>
+            </tr>
+            <tr>
+              <td><strong>Aggregati per correzione</strong></td>
+              <td>Delle Donne<br>Zicari</td>
+              <td>Murasso<br>Zicari</td>
+              <td>Musazzi<br>Bonfiglio</td>
+              <td>Crespi<br>Dentico</td>
+              <td>Verdino<br>Bonfiglio</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SCRUTINIO E CREDITO FORMATIVO -->
+  <div class="card">
+    <div class="card-header"><span class="icon">📊</span><h2>Scrutinio di Ammissione e Credito Formativo</h2></div>
+    <div class="card-body">
+      <div class="alert alert-green" style="margin-bottom:20px">
+        <span class="alert-icon">ℹ️</span>
+        <div>Il range di credito formativo per l'ammissione all'esame è <strong>compreso tra 24 e 40 punti</strong>. Crediti inferiori a 24 non consentono l'ammissione.</div>
+      </div>
+      <p class="section-title">Requisiti di ammissione</p>
+      <ul class="check-list" style="margin-bottom:18px">
+        <li>Frequenza di almeno il <strong>75%</strong> della durata dell'ultima annualità (considerando eventuali deroghe previste dal CD)</li>
+        <li>Valutazione positiva nel <strong>comportamento</strong></li>
+        <li>Valutazione positiva dell'intero percorso formativo in rapporto al raggiungimento del livello minimo degli Obiettivi di apprendimento dello standard regionale</li>
+      </ul>
+      <div class="alert alert-amber">
+        <span class="alert-icon">⚠️</span>
+        <div>In caso di <strong>non ammissione</strong>: va comunque determinato un credito formativo (inferiore a 24) e le competenze eventualmente raggiunte dallo studente <em>(procedure 2.4)</em>.</div>
+      </div>
+      <div class="alert alert-blue" style="margin-top:12px">
+        <span class="alert-icon">📝</span>
+        <div>La <strong>tabella per il credito formativo</strong> è disponibile nella cartella materiali su Drive. <strong>Candidati esterni: NON PRESENTI a.s. 2025/2026.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. DOCUMENTAZIONE -->
+  <div class="card">
+    <div class="card-header"><span class="icon">📁</span><h2>Documentazione da Produrre per la Commissione</h2><span class="tag">Entro 3 giugno 2026</span></div>
+    <div class="card-body">
+      <div class="alert alert-red">
+        <span class="alert-icon">🔴</span>
+        <div>La documentazione deve essere <strong>completa entro la data della riunione preliminare: 3 giugno 2026</strong>. In ufficio didattica è predisposta una <em>cartelletta</em> fisica per ciascuna classe terminale.</div>
+      </div>
+      <p class="section-title" style="margin-top:18px">Contenuto della cartelletta</p>
+      <ul class="check-list">
+        <li><strong>Verbale dello scrutinio finale</strong> — stampato e consegnato in didattica subito dopo lo scrutinio finale</li>
+        <li><strong>Relazione finale sostegno</strong> — entro 29 maggio</li>
+        <li><strong>Documentazione per studenti BES</strong>: PEI (a cura dei docenti di sostegno) e PDP/PIA (a cura dei coordinatori) <strong>entro il 15 maggio</strong></li>
+      </ul>
+
+      <div style="margin-top:22px">
+        <p class="section-title">Programmi svolti e Rendiconto ore di Alternanza</p>
+        <ul class="check-list">
+          <li><strong>Tutti i docenti di 3a e 4a IeFP</strong> inviano i programmi svolti</li>
+          <li><strong>I tutor dell'alternanza</strong> inviano il prospetto con le ore di PCTO 2025/26 al referente</li>
+          <li>Termine: <strong>giovedì 7 maggio</strong> (per caricamento su piattaforma regionale SIUF)</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:22px">
+        <p class="section-title">Identificazione alunni, commissari e aggregati</p>
+        <ul class="check-list">
+          <li><strong>Coordinatori</strong>: raccogliere fotocopie documenti d'identità di tutti gli studenti (verificare la scadenza!) e consegnarle in segreteria didattica</li>
+          <li><strong>Docenti</strong> (commissari e aggregati sostegno): inviare scansione del proprio documento a <a href="mailto:didattica@agrariomendel.it">didattica@agrariomendel.it</a></li>
+          <li>Formato file: <strong>PDF</strong>, no foglio fronte/retro — Gli studenti di 4a con documenti non scaduti sono già in possesso della segreteria</li>
+        </ul>
+        <div class="alert alert-amber" style="margin-top:12px">
+          <span class="alert-icon">📅</span>
+          <div><strong>Termine raccolta/invio documenti identificativi: prima possibile, max entro venerdì 15 maggio</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. PROVE D'ESAME -->
+  <div class="card">
+    <div class="card-header"><span class="icon">✍️</span><h2>Prove d'Esame</h2><span class="tag">3 prove totali</span></div>
+    <div class="card-body">
+      <div class="exam-grid">
+
+        <!-- Prova centralizzata -->
+        <div class="exam-card">
+          <div class="exam-card-head ec-blue">📝 Prova Centralizzata <span class="score-badge">Max 20 pt</span></div>
+          <div class="exam-card-body">
+            <div class="alert alert-blue" style="margin-bottom:12px; font-size:.85rem">
+              <span class="alert-icon">📅</span>
+              <div><strong>4 giugno 2026</strong> — Competenze di base</div>
+            </div>
+            <div class="timing-strip" style="margin-bottom:0; display:flex; flex-direction:column; gap:8px; padding:14px">
+              <div class="timing-item">
+                <div class="timing-dot" style="background:#1565c0"></div>
+                <div class="timing-text"><strong>Italiano — Max 8 pt</strong> 90 min · 8:35 → 10:05/10:20 · pausa 10 min</div>
+              </div>
+              <div class="timing-item">
+                <div class="timing-dot" style="background:#1565c0"></div>
+                <div class="timing-text"><strong>Matematica — Max 7 pt</strong> 90 min · 10:30 → 12:00/12:15 · pausa 10 min</div>
+              </div>
+              <div class="timing-item">
+                <div class="timing-dot" style="background:#1565c0"></div>
+                <div class="timing-text"><strong>Inglese — Max 5 pt</strong> 60 min · 12:25 → 13:25/13:40</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prova professionale -->
+        <div class="exam-card">
+          <div class="exam-card-head ec-orange">🌿 Prova Professionale <span class="score-badge">Max 30 pt</span></div>
+          <div class="exam-card-body">
+            <div class="alert alert-amber" style="margin-bottom:12px; font-size:.85rem">
+              <span class="alert-icon">⏱️</span>
+              <div>Durata: <strong>4h 30 min (min. 4 ore)</strong> — Compiti/attività professionali "in situazione"</div>
+            </div>
+            <ul>
+              <li>Consegna compito e chiarimenti in classe <strong>(~30 min)</strong></li>
+              <li>Uscita presso laboratorio/azienda per parte pratica <strong>(2h 30 min)</strong></li>
+              <li>Rientro in aula ed elaborazione parte scritta <strong>(1h 30 min)</strong></li>
+              <li>Tracce e griglie di correzione preparate da Prof. di Ecologia e Es. Agrarie <strong>entro 22 maggio</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Colloquio -->
+        <div class="exam-card">
+          <div class="exam-card-head ec-teal">🗣️ Colloquio <span class="score-badge">Max 10 pt</span></div>
+          <div class="exam-card-body">
+            <div class="alert alert-green" style="margin-bottom:12px; font-size:.85rem">
+              <span class="alert-icon">⏱️</span>
+              <div>Durata: <strong>30 minuti</strong> per ciascun alunno</div>
+            </div>
+            <div class="phases">
+              <div class="phase">
+                <div class="phase-num">1</div>
+                <div class="phase-content">
+                  <h4>Elaborato personale ("tesina") · 10–15 min</h4>
+                  <p>Presentazione scritta o multimediale su tematiche del settore professionale. Guidati dai Prof. di Ecologia/Es. Agrarie. Raccolti su chiavetta USB.</p>
+                </div>
+              </div>
+              <div class="phase">
+                <div class="phase-num">2</div>
+                <div class="phase-content">
+                  <h4>Progetto di vita e personale · 10–15 min</h4>
+                  <p>Documento realizzato sotto la guida dei Prof. di Italiano (cartaceo o digitale). Raccolto su chiavetta USB.</p>
+                </div>
+              </div>
+            </div>
+            <div class="alert alert-amber" style="margin-top:12px; font-size:.84rem">
+              <span class="alert-icon">🗂️</span>
+              <div>A ciascuna classe sarà consegnata una <strong>chiavetta USB</strong> per raccogliere il materiale. Verrà restituita al referente al termine degli esami.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabella punteggio -->
+      <div style="margin-top:28px">
+        <p class="section-title">Tabella Riassuntiva del Punteggio</p>
+        <div class="table-wrap">
+          <table class="score-table">
+            <thead>
+              <tr>
+                <th>Tipo di prova</th>
+                <th>Oggetto di accertamento</th>
+                <th style="text-align:right">Punteggio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Prova scritta — Competenze culturali di base</td>
+                <td>Padronanza comunicazione in lingua italiana, straniera e matematico-scientifica<br><span class="sub-row">Italiano max 8 · Matematica max 7 · Inglese max 5</span></td>
+                <td>Max 20</td>
+              </tr>
+              <tr>
+                <td>Prova professionale — Competenze tecnico-professionali</td>
+                <td>Raggiungimento degli esiti di apprendimento degli OSA tecnico-professionali</td>
+                <td>Max 30</td>
+              </tr>
+              <tr>
+                <td>Colloquio — Iter formativo e progetto personale</td>
+                <td>Raggiungimento del PECUP, degli OSA e consapevolezza del progetto di vita e del percorso realizzato</td>
+                <td>Max 10</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2">TOTALE PUNTEGGIO</td>
+                <td>MAX 60</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="alert alert-green" style="margin-top:12px">
+          <span class="alert-icon">⭐</span>
+          <div>In sede di valutazione finale è confermato il possibile utilizzo di <strong>5 punti aggiuntivi</strong> per particolari meriti e fisionomia complessiva del candidato.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. PROVE EQUIPOLLENTI / INDIVIDUALIZZATE / BES -->
+  <div class="card">
+    <div class="card-header"><span class="icon">♿</span><h2>Prove Equipollenti, Individualizzate e Studenti BES</h2><span class="tag">Entro 22 maggio</span></div>
+    <div class="card-body">
+      <div class="bes-grid" style="margin-bottom:20px">
+        <div class="bes-card h1">
+          <div class="bes-tag">H1</div>
+          <h4>Equipollente</h4>
+          <p>Dispensa da 1/2/3 prove. In sostituzione: questionario <strong>equipollente</strong> preparato dall'istituto. L'alunno può ottenere <strong>qualifica/diploma</strong>.</p>
+        </div>
+        <div class="bes-card h2">
+          <div class="bes-tag">H2</div>
+          <h4>Individualizzata (Disabile grave)</h4>
+          <p>Prova in forma <strong>individualizzata</strong>. Può essere in forma alternativa al questionario. Ottiene <strong>solo Attestato di Competenze</strong>.</p>
+        </div>
+        <div class="bes-card dsa">
+          <div class="bes-tag">DSA</div>
+          <h4>Prove DSA</h4>
+          <p>Prove Ita/Mat/Ing per DSA inviate dalla Regione insieme a quelle comuni. <strong>Attenzione alle stampe il giorno dello scritto!</strong></p>
+        </div>
+      </div>
+
+      <p class="section-title">Indicazioni per la predisposizione delle prove</p>
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:14px; margin-bottom:18px">
+        <div style="background:var(--green-xpale); border-radius:var(--radius-sm); padding:16px">
+          <strong style="color:var(--green-dark); display:block; margin-bottom:8px">📖 ITALIANO</strong>
+          <p style="font-size:.86rem">Elementi testuali di <em>comprensione</em> (test a risposta multipla o completamento) e <em>produzione</em> (breve testo). Scelta tipologia secondo il PEI.</p>
+        </div>
+        <div style="background:var(--green-xpale); border-radius:var(--radius-sm); padding:16px">
+          <strong style="color:var(--green-dark); display:block; margin-bottom:8px">🔢 MATEMATICA</strong>
+          <p style="font-size:.86rem">Competenze in contesti lavorativi: frazioni, percentuali, grafici, proporzioni, equazioni. Risposta aperta o chiusa. Secondo il PEI.</p>
+        </div>
+        <div style="background:var(--green-xpale); border-radius:var(--radius-sm); padding:16px">
+          <strong style="color:var(--green-dark); display:block; margin-bottom:8px">🌍 INGLESE</strong>
+          <p style="font-size:.86rem">Comprensione del testo + completamento/quesiti. Produzione su lessico professionale specifico. Secondo il PEI.</p>
+        </div>
+      </div>
+
+      <div class="alert alert-red">
+        <span class="alert-icon">🔴</span>
+        <div>
+          <strong>FONDAMENTALE su SIUF:</strong> in "Prepara esami" devono essere indicate le condizioni dello studente (DSA – H1 – H2) <strong>prima di chiudere la sezione</strong>, altrimenti in PRODE non risultano differenze tra equipollenti e differenziati. Le griglie di correzione sono diverse: per equipollenti e differenziati si indica il punteggio raggiunto complessivamente nelle singole prove.
+        </div>
+      </div>
+      <div class="alert alert-amber" style="margin-top:10px">
+        <span class="alert-icon">📅</span>
+        <div>Prove equipollenti/individualizzate e griglie: depositate in didattica <strong>entro venerdì 22 maggio</strong>. Predisposte dal docente di materia in collaborazione con il docente di sostegno.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. SCADENZE RIEPILOGO -->
+  <div class="card">
+    <div class="card-header"><span class="icon">📅</span><h2>Riepilogo Scadenze</h2><span class="tag">Timeline completa</span></div>
+    <div class="card-body">
+      <div class="deadline-grid">
+        <div class="deadline-card warning">
+          <div class="dl-date">📌 Prima possibile</div>
+          <div class="dl-title">Fotocopie doc. identità alunni e docenti</div>
+          <div class="dl-who">Coordinatori (alunni) · Docenti commissari/aggregati</div>
+        </div>
+        <div class="deadline-card warning">
+          <div class="dl-date">📌 7 maggio</div>
+          <div class="dl-title">Programmi svolti + Ore PCTO</div>
+          <div class="dl-who">Tutti i docenti IeFP · Tutor alternanza → referente / Drive</div>
+        </div>
+        <div class="deadline-card urgent">
+          <div class="dl-date">🔴 15 maggio</div>
+          <div class="dl-title">PDP / PEI + Doc. identità (max)</div>
+          <div class="dl-who">Docenti sostegno · Referenti · Coordinatori → cartelletta didattica</div>
+        </div>
+        <div class="deadline-card urgent">
+          <div class="dl-date">🔴 22 maggio</div>
+          <div class="dl-title">Prove equipollenti/individualizzate + Prove professionali</div>
+          <div class="dl-who">Docenti sostegno/curricolari · Prof. Ecologia/Es. Agrarie → cartelletta didattica</div>
+        </div>
+        <div class="deadline-card info">
+          <div class="dl-date">🔵 27/28 maggio</div>
+          <div class="dl-title">Verbale scrutinio finale</div>
+          <div class="dl-who">Coordinatori → stampato e consegnato in didattica dopo scrutinio</div>
+        </div>
+        <div class="deadline-card urgent">
+          <div class="dl-date">🔴 29 maggio</div>
+          <div class="dl-title">Relazione finale sostegno + Tesina + Progetto personale</div>
+          <div class="dl-who">Doc. sostegno (relazione) · Prof. Ecologia/Agrarie (tesina) · Prof. Italiano (progetto) → chiavetta USB / didattica</div>
+        </div>
+        <div class="deadline-card normal">
+          <div class="dl-date">🟢 3 giugno</div>
+          <div class="dl-title">Riunione Preliminare — Documentazione COMPLETA</div>
+          <div class="dl-who">Tutti i docenti coinvolti — cartellette in didattica complete</div>
+        </div>
+        <div class="deadline-card info">
+          <div class="dl-date">🔵 4 giugno</div>
+          <div class="dl-title">Prova Centralizzata</div>
+          <div class="dl-who">Ita 8:35 · Mat 10:30 · Ing 12:25</div>
+        </div>
+      </div>
+
+      <!-- tabella riassuntiva completa -->
+      <div style="margin-top:28px">
+        <p class="section-title">Tabella Completa dei Documenti</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Documento da produrre</th><th>A cura del</th><th>Data / luogo consegna</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Programmi svolti</td><td>Docente curricolare</td><td>7 maggio – referente / Drive</td></tr>
+              <tr><td>Percorsi PCTO</td><td>Tutor alternanza</td><td>7 maggio – referente</td></tr>
+              <tr><td>PDP / PEI</td><td>Docenti sostegno · Referenti</td><td>15 maggio – cartelletta seg. didattica</td></tr>
+              <tr><td>Fotocopia doc. identità alunni</td><td>Coordinatore</td><td>15 maggio – cartelletta seg. didattica</td></tr>
+              <tr><td>Fotocopia doc. identità commissari/aggregati</td><td>Docente commissario/aggregato</td><td>15 maggio – file a seg. didattica</td></tr>
+              <tr><td>Prove equipollenti/individualizzate</td><td>Docenti sostegno e curricolari</td><td>22 maggio – cartelletta seg. didattica</td></tr>
+              <tr><td>Prove professionali + griglie</td><td>Prof. Ecologia · Es. Agrarie</td><td>22 maggio – cartelletta seg. didattica</td></tr>
+              <tr><td>Relazione finale sostegno</td><td>Docente sostegno</td><td>29 maggio – consegnato in didattica</td></tr>
+              <tr><td>Tesina e presentazione</td><td>Prof. Ecologia · Es. Agrarie</td><td>29 maggio – chiavetta USB</td></tr>
+              <tr><td>Progetto di vita e personale</td><td>Docente di Italiano</td><td>29 maggio – cartaceo in didattica / digitale su chiavetta</td></tr>
+              <tr><td>Verbale scrutinio finale</td><td>Coordinatore</td><td>Dopo scrutinio (27/28 mag) – stampato in didattica</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<footer>
+  <div>Corso Professionale (IeFP) &nbsp;·&nbsp; <strong>Pagina creata dall'IIS MENDEL Villa Cortese (MI)</strong></div>
+  <div style="margin-top:6px; opacity:.6; font-size:.74rem">A.S. 2025/2026 &nbsp;·&nbsp; agrariomendel.edu.it</div>
+</footer>
+
+</body>
+</html>
